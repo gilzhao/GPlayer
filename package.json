@@ -1,0 +1,25 @@
+{
+  "name": "gplayer",
+  "version": "1.0.0",
+  "description": "video player",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "vue": "^2.5.17",
+    "vue-server-renderer": "^2.5.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilzhao/GPlayer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gilzhao/GPlayer/issues"
+  },
+  "homepage": "https://github.com/gilzhao/GPlayer#readme"
+}
