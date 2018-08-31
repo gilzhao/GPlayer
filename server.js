@@ -1,8 +1,8 @@
-const createApp = require('./app')
 const server = require('express')()
 const renderer = require('vue-server-renderer').createRenderer({
   template: require('fs').readFileSync('./index.template.html', 'utf-8')
 })
+const createApp = require('./app')
 
 server.get('*', (req, res) => {
   const context = {
