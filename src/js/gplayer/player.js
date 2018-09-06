@@ -32,16 +32,16 @@ class GPlayer {
 
     this.video = this.template.video
     this.bar = new Bar(this.template)
-    this.container = new Controller(this)
+    this.controller = new Controller(this)
     this.setting = new Setting(this)
 
     document.addEventListener('click', () => {
       this.focus = false
     }, true)
 
-    // this.container.addEventListener('click', () => {
-    //   this.focus = true
-    // }, true)
+    this.container.addEventListener('click', () => {
+      this.focus = true
+    }, true)
 
     this.paused = true
     this.timer = new Timer(this)
@@ -79,8 +79,19 @@ class GPlayer {
    * Pause video
    */
   pause() {
-    this.pause = true
+    this.paused = true
     this.video.pause()
+  }
+
+  /**
+   * Toggle between play and pause
+   */
+  toggle() {
+    if (this.video.paused) {
+      this.play()
+    } else {
+      this.pause()
+    }
   }
 
   /**

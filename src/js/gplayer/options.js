@@ -2,6 +2,7 @@ export default (options) => {
   const defaultOption = {
     container: options.element || document.getElementsByClassName('gplayer')[0],
     autoplay: false,
+    theme: '#b7daff',
     loop: false,
     lang: (navigator.language || navigator.browserLanguage).toLowerCase(),
     preload: 'metadata',
