@@ -1,21 +1,24 @@
 <template>
-  <video id="video" preload="none" poster="https://media.w3.org/2010/05/sintel/poster.png">
-    <source id="mp4" src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-    <p>Your user agent does not support the HTML5 Video element.</p>
-  </video>
+  <div class="wrap">
+    <div class="gplayer"></div>
+  </div>
 </template>
 
 <script>
+import Gplayer from './js/gplayer/index.js'
+
 export default {
 	data() {
-		return {
-		};
+		return {};
+	},
+	mounted() {
+    let videoPlayer = new Gplayer({
+      video: {
+        url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4',
+        pic: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg'
+      }
+    })
+    window.player = videoPlayer
 	},
 };
 </script>
-
-<style lang="less">
-div {
-	color: blueviolet;
-}
-</style>

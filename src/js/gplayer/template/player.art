@@ -1,0 +1,14 @@
+<div class="mask"></div>
+<div class="video-wrap">
+  {{ include './video.art' video }}
+</div>
+<div class="controller">
+  <div class="bar-wrap">
+    <div class="bar">
+      <div class="loaded" style="width: 0"></div>
+      <div class="played" style="width: 0; background: {{ options.theme }};">
+        <span class="thumb" style="background: {{ options.theme }}"></span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,7 @@
 const path = require('path')
-const webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HTMLPlugin = require('html-webpack-plugin')
-const {
-  VueLoaderPlugin
-} = require('vue-loader')
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -33,17 +31,25 @@ const config = {
             name: '[name].[ext]?[hash]'
           }
         }]
+      },
+      {
+        test: /\.art$/,
+        loader: 'art-template-loader'
       }
     ]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: isDev ? '"development"' : '"production"'
       }
     }),
-    new VueLoaderPlugin(),
-    new HTMLPlugin()
+    new HTMLPlugin({
+      meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+      inject: true,
+      js: [ "https://cdn.jsdelivr.net/npm/stats.js"]
+    })
   ]
 }
 
@@ -72,7 +78,7 @@ if (isDev) {
     historyApiFallback: true,
     hot: true
   }
-  config.plugins.push(
+  config.plugins.push(  //对应上面hot,局部更新组建，不刷新网页
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   )
