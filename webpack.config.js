@@ -23,7 +23,7 @@ const config = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(png|jpg|svg|jpeg|gif)$/,
+        test: /\.(png|jpg|jpeg|gif)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -31,6 +31,10 @@ const config = {
             name: '[name].[ext]?[hash]'
           }
         }]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       },
       {
         test: /\.art$/,
@@ -46,9 +50,11 @@ const config = {
       }
     }),
     new HTMLPlugin({
-      meta: { viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no' },
+      meta: {
+        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+      },
       inject: true,
-      js: [ "https://cdn.jsdelivr.net/npm/stats.js"]
+      js: ["https://cdn.jsdelivr.net/npm/stats.js"]
     })
   ]
 }
@@ -78,7 +84,7 @@ if (isDev) {
     historyApiFallback: true,
     hot: true
   }
-  config.plugins.push(  //对应上面hot,局部更新组建，不刷新网页
+  config.plugins.push( //对应上面hot,局部更新组建，不刷新网页
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   )

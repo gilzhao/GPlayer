@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './app.vue'
 import Stats from './lib/stats.js'
 
-import './assets/styles/gplayer.less'
+import './css/index.less'
 
 const root = document.createElement('div')
 document.body.appendChild(root)

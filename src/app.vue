@@ -13,9 +13,10 @@ export default {
 	},
 	mounted() {
     let videoPlayer = new Gplayer({
+      theme: '#f63',
       video: {
         url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4',
-        pic: 'http://static.smartisanos.cn/pr/img/video/video_03_cc87ce5bdb.jpg'
+        pic: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.png'
       }
     })
     window.player = videoPlayer

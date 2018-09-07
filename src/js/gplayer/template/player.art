@@ -1,8 +1,18 @@
 <div class="mask"></div>
 <div class="video-wrap">
   {{ include './video.art' video }}
+  <div class="bezel">
+    <span class="icon-bezel"></span>
+    <span class="icon-loading">{{@ icons.loading }}</span>
+  </div>
 </div>
 <div class="controller">
+  <div class="player-icons icons-left">
+    <button class="icon-play">{{@ icons.play }}</button>
+    <span class="time">
+      <span class="ptime">00:00</span> / <span class="dtime">--:--</span>
+    </span>
+  </div>
   <div class="bar-wrap">
     <div class="bar">
       <div class="loaded" style="width: 0"></div>
@@ -12,3 +22,4 @@
     </div>
   </div>
 </div>
+<div class="toast"></div>

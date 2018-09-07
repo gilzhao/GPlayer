@@ -1,3 +1,4 @@
+import Icons from './icons'
 import tplPlayer from './template/player.art'
 
 class Template {
@@ -12,6 +13,7 @@ class Template {
     this.container.innerHTML = tplPlayer({
       options: this.options,
       index: this.index,
+      icons: Icons,
       video: {
         current: true,
         pic: this.options.video.pic,
@@ -23,10 +25,21 @@ class Template {
     this.mask = this.container.querySelector('.mask')
     this.videoWrap = this.container.querySelector('.video-wrap')
     this.video = this.container.querySelector('.video-current')
+    this.bezel = this.container.querySelector('.icon-bezel')
+
+    // controller
     this.controller = this.container.querySelector('.controller')
+    // bar-wrap
     this.barWrap = this.container.querySelector('.bar-wrap')
     this.playedBar = this.container.querySelector('.played')
     this.loadedBar = this.container.querySelector('.loaded')
+    // play button and time
+    this.playButton = this.container.querySelector('.icon-play')
+    this.ptime = this.container.querySelector('.ptime')
+    this.dtime = this.container.querySelector('.dtime')
+
+    // error toast
+    this.toast = this.container.querySelector('.toast')
   }
 }
 
