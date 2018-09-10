@@ -4,7 +4,6 @@ export default (options) => {
     autoplay: false,
     theme: '#b7daff',
     loop: false,
-    lang: (navigator.language || navigator.browserLanguage).toLowerCase(),
     preload: 'metadata',
     volume: 0.7,
     video: {},

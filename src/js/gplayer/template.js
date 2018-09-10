@@ -37,6 +37,11 @@ class Template {
     this.playButton = this.container.querySelector('.icon-play')
     this.ptime = this.container.querySelector('.ptime')
     this.dtime = this.container.querySelector('.dtime')
+    // volume
+    this.volumeButton = this.container.querySelector('.icon-volume')
+    // full screen
+    this.browserFullButton = this.container.querySelector('.icon-full')
+    this.webFullButton = this.container.querySelector('.icon-full-in')
 
     // error toast
     this.toast = this.container.querySelector('.toast')

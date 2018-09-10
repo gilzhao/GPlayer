@@ -8,6 +8,13 @@ class Events {
       'playing', 'progress', 'ratechange', 'seeked', 'seeking', 'stalled', 'suspend',
       'timeupdate', 'volumechange', 'waiting'
     ]
+
+    this.playerEvents = [
+      'toast_show', 'toast_hide',
+      'destroy',
+      'resize',
+      'fullscreen', 'fullscreen_cancel', 'webfullscreen', 'webfullscreen_cancel'
+    ]
   }
 
   on(name, callback) {
@@ -28,7 +35,9 @@ class Events {
   }
 
   type(name) {
-    if (this.videoEvents.indexOf(name) !== -1) {
+    if (this.playerEvents.indexOf(name) !== -1) {
+      return 'player'
+    } else if (this.videoEvents.indexOf(name) !== -1) {
       return 'video'
     }
 

@@ -1,14 +1,16 @@
 import Promise from 'promise-polyfill'
 
 import utils from './utils'
-import handleOption from './options'
+import ConfigOption from './options'
 import Events from './events'
+import FullScreen from './fullscreen'
 import Template from './template'
 import Icons from './icons'
 import Bar from './bar'
 import Timer from './timer'
 import Controller from './controller'
 import Setting from './setting'
+import Volume from './volume'
 import Bezel from './bezel'
 
 let index = 0
@@ -17,26 +19,22 @@ const instances = []
 class GPlayer {
 
   constructor(options) {
-    this.options = handleOption(options)
-    this.events = new Events()
+    this.options = ConfigOption(options)
     this.container = this.options.container
     this.container.classList.add('gplayer')
-
-    if (utils.isMobile) {
-      this.container.classList.add('player-mobile')
-    }
-
     this.template = new Template({
       container: this.container,
       options: this.options,
       index: index
     })
-
-    this.video = this.template.video
+    this.events = new Events()
+    this.timer = new Timer(this)
+    this.controller = new Controller(this)
+    this.fullScreen = new FullScreen(this)
+    this.setting = new Setting(this)
+    // this.volume = new Volume(this)
     this.bar = new Bar(this.template)
     this.bezel = new Bezel(this.template.bezel)
-    this.controller = new Controller(this)
-    this.setting = new Setting(this)
 
     document.addEventListener('click', () => {
       this.focus = false
@@ -47,8 +45,7 @@ class GPlayer {
     }, true)
 
     this.paused = true
-    this.timer = new Timer(this)
-
+    this.video = this.template.video
     this.initVideo(this.video)
 
     index++
@@ -108,6 +105,19 @@ class GPlayer {
     this.timer.disable('loading')
     this.container.classList.remove('player-playing')
     this.container.classList.add('player-paused')
+  }
+
+  switchVolumeIcon() {
+    if (!this.volume()) {
+      this.template.volumeButton.innerHTML = Icons.volumeUp
+    } else {
+      this.template.volumeButton.innerHTML = Icons.volumeOff
+    }
+  }
+
+  volume() {
+    // this.switchVolumeIcon()
+    return this.video.muted
   }
 
   /**
@@ -205,6 +215,8 @@ class GPlayer {
         this.events.trigger(this.events.videoEvents[i])
       })
     }
+
+    this.switchVolumeIcon()
   }
 
   toast(text, time = 2000, opacity = .8) {
@@ -223,6 +235,10 @@ class GPlayer {
         this.events.trigger('toast_hide')
       }, time)
     }
+  }
+
+  resize () {
+    this.events.trigger('resize')
   }
 }
 

@@ -7,6 +7,8 @@ class Controller {
 
     this.initPlayButton()
     this.initPlayedBar()
+    this.initFullButton()
+    this.initVolumeButton()
   }
 
   initPlayButton() {
@@ -45,6 +47,23 @@ class Controller {
       this.player.timer.disable('progress')
       document.addEventListener(utils.nameMap.dragMove, thumbMove)
       document.addEventListener(utils.nameMap.dragEnd, thumbUp)
+    })
+  }
+
+  initFullButton() {
+    this.player.template.browserFullButton.addEventListener('click', () => {
+      this.player.fullScreen.toggle('browser')
+    })
+
+    this.player.template.webFullButton.addEventListener('click', () => {
+      this.player.fullScreen.toggle('web')
+    })
+  }
+
+  initVolumeButton() {
+    this.player.template.volumeButton.addEventListener('click', () => {
+      this.player.video.muted = !this.player.video.muted
+      this.player.switchVolumeIcon()
     })
   }
 

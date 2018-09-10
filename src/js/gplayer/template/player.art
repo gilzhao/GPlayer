@@ -13,6 +13,13 @@
       <span class="ptime">00:00</span> / <span class="dtime">--:--</span>
     </span>
   </div>
+  <div class="player-icons icons-right">
+    <button class="icon icon-volume">{{@ icons.volumeDown }}</button>
+    <div class="full">
+      <button class="icon icon-full-in">{{@ icons.fullWeb }}</button>
+      <button class="icon icon-full">{{@ icons.full }}</button>
+    </div>
+  </div>
   <div class="bar-wrap">
     <div class="bar">
       <div class="loaded" style="width: 0"></div>

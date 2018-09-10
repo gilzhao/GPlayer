@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="gplayer"></div>
+    <div id="gp1" class="gp"></div>
   </div>
 </template>
 
@@ -13,6 +13,7 @@ export default {
 	},
 	mounted() {
     let videoPlayer = new Gplayer({
+      container: document.getElementById('gp1'),
       theme: '#f63',
       video: {
         url: 'https://moeplayer.b0.upaiyun.com/dplayer/hikarunara.mp4',

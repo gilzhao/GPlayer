@@ -46,6 +46,22 @@ const utils = {
     }
   },
 
+  getScrollPosition() {
+    return {
+      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+    }
+  },
+
+  setScrollPosition({left = 0, top = 0}) {
+    if (this.isFirefox) {
+      document.documentElement.scrollLeft = left;
+      document.documentElement.scrollTop = top
+    } else {
+      window.scrollTo(left, top)
+    }
+  },
+
   isMobile: isMobile,
 
   nameMap: {

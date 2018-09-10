@@ -3,6 +3,14 @@
   padding: 0;
 }
 
+.web-fullscreen-fix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
 .gplayer {
   position: relative;
   width: 100%;
@@ -16,6 +24,14 @@
     path {
       fill: #fff;
     }
+  }
+  &.fulled {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -40,17 +56,19 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 41px;
+  height: 36px;
   padding: 0 10px;
   user-select: none;
   transition: all 0.3s ease;
   user-select: none;
+  background: rgba(0, 0, 0, .3);
   .bar-wrap {
     padding: 5px 0;
     cursor: pointer;
     position: absolute;
+    left: 0;
     bottom: 30px;
-    width: calc(100% - 20px);
+    width: calc(100%);
     height: 2px;
     &:hover {
       .thumb {
@@ -126,6 +144,38 @@
         vertical-align: baseline;
         width: 35px;
       }
+    }
+  }
+  &.icons-right {
+    right: 10px;
+    .icon {
+      padding: 5px;
+      width: 28px;
+      height: 100%;
+      border: none;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+    .full {
+      display: inline-block;
+      height: 100%;
+      position: relative;
+      .icon-full-in {
+        // display: block;
+      }
+
+      .icon-full {
+        // position: absolute;
+        // top: -30px;
+        // z-index: 1;
+        // display: none;
+      }
+    }
+    .icon-volume {
+      width: 43px;
     }
   }
 }
